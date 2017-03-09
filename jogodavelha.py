@@ -7,7 +7,7 @@ state_dict={}
 # 3 4 5
 # 6 7 8
 
-print(initial_state)
+# print(initial_state)
 
 def ended(state):
     empty_square=state.find(".")
@@ -66,12 +66,27 @@ def generate_next_states(state, next_symbol, free_space):
 
 def play(state_dict, state, next_symbol, free_space):
     new_states=generate_next_states(state, next_symbol, free_space)
-    state_dict[state]=new_states
+    if (state in state_dict.keys()):
+        state_dict[state]+=new_states
+        state_dict[state]=list(set(state_dict[state]))
+    else:
+        state_dict[state]=new_states
     next_symbol=change_symbol(next_symbol)
     for each in new_states:
         if (not (ended(each))):
             play(state_dict, each, next_symbol, free_space)
 
+
+def print_dict(state_dict):
+    for key, states in state_dict.iteritems():
+        print(key, states)
+
+def print_dot(state_dict):
+    print("digraph {")
+    for key, states in state_dict.iteritems():
+        for each in states:
+            print '"' + key + " --> " + each + '"'
+    print("}")
 # 
 # if (ended(initial_state)):
 #     print("Algorithm is just wrong!")
@@ -83,6 +98,7 @@ def play(state_dict, state, next_symbol, free_space):
 #     if (ended(states[i])):
 #         print("Algorithm is just wrong!")
 #     generate_next_states(states[i], next_symbol, free_space)
-
 play(state_dict, initial_state, next_symbol, free_space)
-print(state_dict)
+# print(state_dict)
+# print_dict(state_dict)
+print_dot(state_dict)
