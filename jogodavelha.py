@@ -85,7 +85,7 @@ def print_dot(state_dict):
     print("digraph {")
     for key, states in state_dict.iteritems():
         for each in states:
-            print '"' + key + " --> " + each + '"'
+            print '"' + key + '"' + " -> " + '"'  + each + '"'
     print("}")
 # 
 # if (ended(initial_state)):
