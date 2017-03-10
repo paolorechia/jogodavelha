@@ -1,6 +1,9 @@
+import sys
+
 initial_state=".......OX"
+initial_state=
 next_symbol="O"
-free_space=7
+free_space=9
 state_dict={}
 
 # 0 1 2 
@@ -87,18 +90,11 @@ def print_dot(state_dict):
         for each in states:
             print '"' + key + '"' + " -> " + '"'  + each + '"'
     print("}")
-# 
-# if (ended(initial_state)):
-#     print("Algorithm is just wrong!")
-# states=generate_next_states(initial_state, next_symbol, free_space)
-# state_dict[initial_state]=states
-# print(state_dict)
-# next_symbol=change_symbol(next_symbol)
-# for i in range(len(states)):
-#     if (ended(states[i])):
-#         print("Algorithm is just wrong!")
-#     generate_next_states(states[i], next_symbol, free_space)
+
 play(state_dict, initial_state, next_symbol, free_space)
 # print(state_dict)
 # print_dict(state_dict)
 print_dot(state_dict)
+
+# Para imprimir numero de vertices ao final
+# print(len(state_dict.keys()))
