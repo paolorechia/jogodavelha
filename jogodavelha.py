@@ -1,16 +1,13 @@
 import sys
 
 initial_state=".......OX"
-initial_state=
 next_symbol="O"
 free_space=9
 state_dict={}
 
-# 0 1 2 
+# 0 1 2
 # 3 4 5
 # 6 7 8
-
-# print(initial_state)
 
 def ended(state):
     empty_square=state.find(".")
@@ -92,9 +89,9 @@ def print_dot(state_dict):
     print("}")
 
 play(state_dict, initial_state, next_symbol, free_space)
-# print(state_dict)
-# print_dict(state_dict)
 print_dot(state_dict)
 
 # Para imprimir numero de vertices ao final
-# print(len(state_dict.keys()))
+print "//" + str((len(state_dict.keys())))
+
+
